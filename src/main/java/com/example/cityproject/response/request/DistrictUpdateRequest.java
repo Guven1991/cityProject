@@ -1,4 +1,4 @@
-package com.example.cityproject.request;
+package com.example.cityproject.response.request;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

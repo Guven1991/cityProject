@@ -26,8 +26,32 @@ public class CityService {
     }
 
     public CityDto createCity(CityDto cityDto) {
+
+        List<City> cityList = cityRepository.findAll();
+        String cityDtoName = cityDto.getCityName().toUpperCase();
         City city = dozerBeanMapper.map(cityDto, City.class);
-        City cityReturned = cityRepository.save(city);
+        city.setCityName(cityDtoName);
+            City cityReturned = cityRepository.save(city);
+//        City cityReturned =   cityList.stream().map(c -> {
+//
+//            if (Objects.equals(cityDto.getCityName(), c.getCityName())) {
+//                throw new CityAlreadyDefinedException("This city name already defined");
+//            }
+//            return      cityRepository.save(city);
+//
+//
+//
+//        });
+
+//        Person result2 = persons.stream()
+//                .filter(p -> {
+//                    if ("jack".equals(p.getName()) && 20 == p.getAge()) {
+//                        return true;
+//                    }
+//                    return false;
+//                }).findAny()
+//                .orElse(null);
+
         return dozerBeanMapper.map(cityReturned, CityDto.class);
     }
 
@@ -38,6 +62,7 @@ public class CityService {
     }
 
     public CityDto getCityById(Long id) {
+
         City city = cityRepository.findById(id).orElseThrow(() -> new CityNotFoundException("Not Found City With Id: " + id));
         List<DistrictDto> districtDtoList = districtService.getAllDistrictByCityId(id);
         CityDto cityDto = dozerBeanMapper.map(city, CityDto.class);

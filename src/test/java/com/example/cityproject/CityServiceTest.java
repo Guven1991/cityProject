@@ -73,6 +73,7 @@ public class CityServiceTest {
     @Test
     public void createCity() {
         when(cityRepository.save(any())).thenReturn(city);
+
         CityDto cityDtoReturned = cityService.createCity(cityDto);
         assertEquals(Optional.of(1L), Optional.ofNullable(cityDtoReturned.getId()));
     }
@@ -87,10 +88,11 @@ public class CityServiceTest {
 
     @Test
     public void getCityById() {
-        when(cityRepository.findById(any())).thenReturn(Optional.ofNullable(city));
+        when(cityRepository.findById(1L)).thenReturn(Optional.ofNullable(city));
         when(districtService.getAllDistrictByCityId(any())).thenReturn(List.of(districtDto));
 
         CityDto cityDto = cityService.getCityById(1L);
+
         assertEquals(Optional.of(1L), Optional.ofNullable(cityDto.getId()));
         assertEquals("istanbul", cityDto.getCityName());
         assertEquals(Optional.of(34), Optional.ofNullable(cityDto.getPlateNumber()));

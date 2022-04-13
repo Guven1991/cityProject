@@ -17,5 +17,7 @@ public class CityGetByIdResponse {
 
     private Integer plateNumber;
 
+    private String area;
+
     private List<DistrictResponse> districtList;
 }

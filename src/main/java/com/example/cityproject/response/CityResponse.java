@@ -14,4 +14,6 @@ public class CityResponse {
     private String imageURL;
 
     private Integer plateNumber;
+
+    private String area;
 }

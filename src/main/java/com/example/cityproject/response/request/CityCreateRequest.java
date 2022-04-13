@@ -1,4 +1,4 @@
-package com.example.cityproject.request;
+package com.example.cityproject.response.request;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,4 +12,6 @@ public class CityCreateRequest {
     private String imageURL;
 
     private Integer plateNumber;
+
+    private String area;
 }

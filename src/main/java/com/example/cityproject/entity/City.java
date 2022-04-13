@@ -26,6 +26,6 @@ public class City {
     @Column(length = 3)
     private Integer plateNumber;
 
-//    @OneToMany(mappedBy ="city", cascade = CascadeType.REMOVE)
-//    private List<District> districtList;
+    private String area;
+
 }

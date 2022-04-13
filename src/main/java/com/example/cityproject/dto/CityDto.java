@@ -22,4 +22,6 @@ public class CityDto {
     private Integer plateNumber;
 
     private List<DistrictDto> districtList;
+
+    private String area;
 }

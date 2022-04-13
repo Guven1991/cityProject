@@ -1,7 +1,7 @@
 package com.example.cityproject.controller;
 
 import com.example.cityproject.dto.CityDto;
-import com.example.cityproject.request.CityCreateRequest;
+import com.example.cityproject.response.request.CityCreateRequest;
 import com.example.cityproject.response.CityGetByIdResponse;
 import com.example.cityproject.response.CityResponse;
 import com.example.cityproject.service.CityService;
@@ -38,7 +38,7 @@ public class CityController {
                 dozerBeanMapper.map(cityDto, CityResponse.class)).collect(Collectors.toList()));
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CityGetByIdResponse> getCityById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(dozerBeanMapper.map(cityService.getCityById(id), CityGetByIdResponse.class));
     }
