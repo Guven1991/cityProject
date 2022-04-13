@@ -1,0 +1,8 @@
+{
+  "name": "city-project",
+  "buildpacks": [
+    {
+      "url": "heroku/maven"
+    }
+  ]
+}
