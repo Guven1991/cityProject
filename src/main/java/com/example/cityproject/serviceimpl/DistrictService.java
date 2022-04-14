@@ -7,6 +7,7 @@ import com.example.cityproject.exception.DistrictNotFoundException;
 import com.example.cityproject.repository.DistrictRepository;
 import com.example.cityproject.service.ICityService;
 import com.example.cityproject.service.IDistrictService;
+import lombok.extern.slf4j.Slf4j;
 import org.dozer.DozerBeanMapper;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class DistrictService implements IDistrictService {
 
     DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
@@ -31,8 +33,8 @@ public class DistrictService implements IDistrictService {
     public DistrictDto createDistrict(DistrictDto districtDto, Long cityId) {
 
         CityDto cityDto = cityService.getCityById(cityId);
-
         districtDto.setCity(cityDto);
+        log.info("createDistrict is successful");
 
         District district = dozerBeanMapper.map(districtDto, District.class);
         return dozerBeanMapper.map(districtRepository.save(district), DistrictDto.class);
@@ -47,15 +49,18 @@ public class DistrictService implements IDistrictService {
     @Override
     public List<DistrictDto> getAllDistricts() {
         List<District> districtList = districtRepository.findAll();
+        log.info("getAllDistricts is successful");
         return districtList.stream().map(district ->
                 dozerBeanMapper.map(district, DistrictDto.class)).collect(Collectors.toList());
     }
     @Override
     public void deleteDistrict(Long id) {
         if (!districtRepository.existsById(id)) {
+            log.error("deleteDistrict error");
             throw new DistrictNotFoundException("District Not Found");
         }
         districtRepository.deleteById(id);
+        log.info("deleteDistrict is successful");
     }
     @Override
     public DistrictDto updateDistrict(Long id, DistrictDto districtDto) {
@@ -68,6 +73,7 @@ public class DistrictService implements IDistrictService {
             district.setId(id);
             return districtRepository.save(district);
         });
+        log.info("updateDistrict is successful");
         return dozerBeanMapper.map(districtUpdated, DistrictDto.class);
     }
 

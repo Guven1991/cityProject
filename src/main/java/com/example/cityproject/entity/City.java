@@ -1,8 +1,11 @@
 package com.example.cityproject.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -23,9 +26,17 @@ public class City {
     @Column(name = "imageURL",length = 1000)
     private String imageURL;
 
-    @Column(length = 3)
+    @Column(length = 3, name = "plate_number")
     private Integer plateNumber;
 
     private String area;
+
+    @CreatedDate
+    @Column(name = "create_date")
+    private LocalDateTime createDate;
+
+    @LastModifiedDate
+    @Column(name = "update_date")
+    private LocalDateTime updateDate;
 
 }

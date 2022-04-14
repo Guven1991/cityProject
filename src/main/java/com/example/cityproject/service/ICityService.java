@@ -11,5 +11,5 @@ public interface ICityService {
     CityDto getCityById(Long id);
     CityDto updateCity(CityDto cityDto, Long id);
     void deleteCity(Long id);
-    boolean isCityNameExists(String cityName, List<CityDto> cityDtoList);
+
 }

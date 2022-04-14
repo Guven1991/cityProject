@@ -24,4 +24,8 @@ public class CityDto {
     private List<DistrictDto> districtList;
 
     private String area;
+
+//    private LocalDateTime createDate;
+
+//    private LocalDateTime updateDate;
 }
