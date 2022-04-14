@@ -1,10 +1,10 @@
 package com.example.cityproject.controller;
 
 import com.example.cityproject.dto.DistrictDto;
-import com.example.cityproject.response.request.DistrictCreateRequest;
-import com.example.cityproject.response.request.DistrictUpdateRequest;
+import com.example.cityproject.request.DistrictCreateRequest;
+import com.example.cityproject.request.DistrictUpdateRequest;
 import com.example.cityproject.response.DistrictResponse;
-import com.example.cityproject.service.DistrictService;
+import com.example.cityproject.serviceimpl.DistrictService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

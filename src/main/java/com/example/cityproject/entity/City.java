@@ -17,7 +17,7 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, name = "city_name")
+    @Column( name = "city_name")
     private String cityName;
 
     @Column(name = "imageURL",length = 1000)

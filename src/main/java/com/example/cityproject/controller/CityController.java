@@ -1,10 +1,10 @@
 package com.example.cityproject.controller;
 
 import com.example.cityproject.dto.CityDto;
-import com.example.cityproject.response.request.CityCreateRequest;
+import com.example.cityproject.request.CityCreateRequest;
 import com.example.cityproject.response.CityGetByIdResponse;
 import com.example.cityproject.response.CityResponse;
-import com.example.cityproject.service.CityService;
+import com.example.cityproject.serviceimpl.CityService;
 import lombok.RequiredArgsConstructor;
 import org.dozer.DozerBeanMapper;
 import org.springframework.http.ResponseEntity;
