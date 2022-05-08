@@ -34,7 +34,8 @@ public class CityService implements ICityService {
     @Override
     public CityDto createCity(CityDto cityDto) {
         List<CityDto> cityDtoList = getAllCities();
-        String cityDtoName = cityDto.getCityName().toUpperCase();
+        String cityDtoName = cityDto.getCityName().toUpperCase().trim();
+        String cityDtoArea = cityDto.getArea().toUpperCase().trim();
 
         if (isCityNameExists(cityDtoName, cityDtoList)) {
             log.error("Same cityName Error");
@@ -43,6 +44,7 @@ public class CityService implements ICityService {
 
         City city = dozerBeanMapper.map(cityDto, City.class);
         city.setCityName(cityDtoName);
+        city.setArea(cityDtoArea);
         LocalDateTime localDateTime = LocalDateTime.now();
         city.setCreateDate(localDateTime);
         City cityReturned = cityRepository.save(city);
