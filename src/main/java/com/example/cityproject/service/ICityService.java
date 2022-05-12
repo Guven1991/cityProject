@@ -12,6 +12,4 @@ public interface ICityService {
     CityDto updateCity(CityDto cityDto, Long id);
     void deleteCity(Long id);
 
-
-    
 }
